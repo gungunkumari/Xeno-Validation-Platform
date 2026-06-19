@@ -7,8 +7,11 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     DATABASE_URL: str
-
-    ALLOWED_ORIGINS: list[str] = ["http://localhost:3000"]
+    
+    ALLOWED_ORIGINS: list[str] = [
+    "http://localhost:3000",
+    "https://xeno-validation-platform.vercel.app"
+]
 
     class Config:
         env_file = ".env"
