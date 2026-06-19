@@ -56,7 +56,6 @@ export function ValidationProvider({ children }: { children: ReactNode }) {
     // ignore
   }
 };
-  };
 
   const clearResult = () => {
     setResultState(null);
