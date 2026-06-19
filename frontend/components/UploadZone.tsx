@@ -70,7 +70,7 @@ export default function UploadZone() {
     formData.append("file", fileInputRef.current.files[0]);
 
     const response = await fetch(
-      "energetic-warmth-production-b305.up.railway.app",
+      "https://energetic-warmth-production-b305.up.railway.app/",
       {
         method: "POST",
         body: formData,
