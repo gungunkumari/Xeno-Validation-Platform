@@ -60,14 +60,38 @@ export default function UploadZone() {
     if (selected) handleFile(selected);
   };
 
-  const handleUpload = () => {
-    if (!file) return;
+  const handleUpload = async () => {
+  if (!fileInputRef.current?.files?.[0]) return;
+
+  try {
     setStatus("uploading");
-    // Simulated upload — will be replaced with real API call
-    setTimeout(() => {
-      setStatus("success");
-    }, 2200);
-  };
+
+    const formData = new FormData();
+    formData.append("file", fileInputRef.current.files[0]);
+
+    const response = await fetch(
+      "energetic-warmth-production-b305.up.railway.app",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Upload failed");
+    }
+
+    const result = await response.json();
+
+    console.log(result);
+
+    setStatus("success");
+  } catch (error) {
+    console.error(error);
+    setErrorMessage("Failed to upload file");
+    setStatus("error");
+  }
+};
 
   const handleReset = () => {
     setFile(null);
