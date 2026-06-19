@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Upload, FileText, X, CheckCircle, AlertCircle, Loader } from "lucide-react";
+import { useValidation } from "@/context/ValidationContext";
 
 type UploadStatus = "idle" | "ready" | "uploading" | "success" | "error";
 
@@ -20,6 +21,8 @@ function formatBytes(bytes: number): string {
 }
 
 export default function UploadZone() {
+   const { setResult } = useValidation();
+  const [isDragging, setIsDragging] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState<SelectedFile | null>(null);
   const [status, setStatus] = useState<UploadStatus>("idle");
@@ -30,6 +33,7 @@ export default function UploadZone() {
     if (!f.name.endsWith(".csv")) return "Only CSV files are accepted.";
     if (f.size > 50 * 1024 * 1024) return "File size must be under 50 MB.";
     return null;
+    
   };
 
   const handleFile = useCallback((f: File) => {
@@ -84,6 +88,7 @@ export default function UploadZone() {
     const result = await response.json();
 
     console.log(result);
+    setResult(result);
 
     setStatus("success");
   } catch (error: any) {
