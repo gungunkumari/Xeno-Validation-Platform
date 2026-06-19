@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #FAFAF9;
+  --color-surface: #FFFFFF;
+  --color-border: #E8E4F0;
+  --color-primary: #7C6FCD;
+  --color-primary-light: #EDE9FA;
+  --color-primary-dark: #5B4FB8;
+  --color-accent-gold: #C9A84C;
+  --color-accent-gold-light: #FDF8E7;
+  --color-text: #1A1825;
+  --color-muted: #6E6A7C;
+  --color-muted-light: #F4F2F8;
+  --color-success: #3D9E6B;
+  --color-success-light: #EBF7F1;
+  --color-danger: #C0454A;
+  --color-danger-light: #FAEAEA;
+  --color-warning: #C9913A;
+  --color-warning-light: #FDF3E3;
+
+  --font-sans: "Inter", "system-ui", sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --shadow-card: 0 1px 3px rgba(124, 111, 205, 0.06), 0 4px 16px rgba(124, 111, 205, 0.04);
+  --shadow-elevated: 0 4px 24px rgba(124, 111, 205, 0.1), 0 1px 4px rgba(0,0,0,0.04);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Tabular numbers for data displays */
+.tabular-nums {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9C3E0;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* File input reset */
+input[type="file"] {
+  display: none;
+}
