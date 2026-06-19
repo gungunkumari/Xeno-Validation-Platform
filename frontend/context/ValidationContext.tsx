@@ -43,13 +43,19 @@ export function ValidationProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const setResult = (r: ValidationResult) => {
-    console.log("RESULT =", r);
-    setResultState(r);
-    try {
-      localStorage.setItem("debug", JSON.stringify(r, null, 2));
-    } catch {
-      // storage full or unavailable — in-memory still works
-    }
+  console.log("RESULT =", r);
+
+  setResultState(r);
+
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(r)
+    );
+  } catch {
+    // ignore
+  }
+};
   };
 
   const clearResult = () => {
