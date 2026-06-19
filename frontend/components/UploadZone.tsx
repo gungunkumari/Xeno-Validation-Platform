@@ -70,7 +70,7 @@ export default function UploadZone() {
     formData.append("file", fileInputRef.current.files[0]);
 
     const response = await fetch(
-      "https://energetic-warmth-production-b305.up.railway.app/",
+      "https://energetic-warmth-production-b305.up.railway.app/transactions/upload",
       {
         method: "POST",
         body: formData,
@@ -86,11 +86,15 @@ export default function UploadZone() {
     console.log(result);
 
     setStatus("success");
-  } catch (error) {
-    console.error(error);
-    setErrorMessage("Failed to upload file");
-    setStatus("error");
-  }
+  } catch (error: any) {
+  console.error(error);
+
+  setErrorMessage(
+    error?.message || JSON.stringify(error)
+  );
+
+  setStatus("error");
+}
 };
 
   const handleReset = () => {
