@@ -21,8 +21,8 @@ function formatBytes(bytes: number): string {
 }
 
 export default function UploadZone() {
-   const { setResult } = useValidation();
-  const [isDragging, setIsDragging] = useState(false);
+  const { setResult } = useValidation();
+
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState<SelectedFile | null>(null);
   const [status, setStatus] = useState<UploadStatus>("idle");
